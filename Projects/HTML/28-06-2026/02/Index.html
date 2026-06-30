@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles | VBR Landscaping Insights</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Reset & Core UX Configurations */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #fcfdfc;
+            color: #1e291e;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Hero Banner Design System */
+        .hero-banner {
+            background-color: #0c2312;
+            color: #ffffff;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero-accent {
+            color: #64b46c;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .hero-banner h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 3.6rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            font-weight: 300;
+            max-width: 640px;
+            margin: 0 auto;
+            opacity: 0.85;
+            line-height: 1.6;
+        }
+
+        /* Structural Grid System Container */
+        .main-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Consistent Content Dividers */
+        .divider-line {
+            border: 0;
+            height: 1px;
+            background-color: #e2e8f0;
+            width: 100%;
+            margin: 60px 0;
+        }
+
+        /* Slider Wrapper System */
+        .articles-slider-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .articles-stack {
+            display: flex;
+            width: 200%; /* 2 slides = 200% total layout width */
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .main-article {
+            width: 50%; /* Each slide occupies exactly 100% of screen container */
+            flex-shrink: 0;
+            display: flex;
+            gap: 60px;
+            align-items: flex-start; 
+            text-align: left;
+            padding: 10px;
+        }
+
+        /* Contrast Layout: Slide 1 Image Left, Slide 2 Image Right */
+        .main-article.image-left {
+            flex-direction: row;
+        }
+
+        .main-article.image-right {
+            flex-direction: row-reverse;
+        }
+
+        .article-img-wrapper {
+            flex: 1.2;
+            position: relative;
+            min-width: 350px;
+            flex-shrink: 0;
+        }
+
+        .article-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            display: block;
+        }
+
+        .badge {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            background-color: #ffffff;
+            color: #0c2312;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .article-content {
+            flex: 1;
+            padding-top: 8px;
+        }
+
+        .article-link-wrapper {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .article-link-wrapper:hover h3 {
+            color: #64b46c;
+        }
+
+        .article-date {
+            color: #64b46c;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .article-content h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            color: #0c2312;
+            font-size: 2.5rem;
+            margin-bottom: 18px;
+            line-height: 1.2;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .article-content p {
+            color: #4a5568;
+            font-size: 1.05rem;
+            line-height: 1.65;
+            margin-bottom: 24px;
+        }
+
+        /* Explicit Inline Action Links Style */
+        .slider-read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #0c2312;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+            transition: color 0.2s ease;
+        }
+
+        .slider-read-more:hover {
+            color: #64b46c;
+        }
+
+        /* Author Metadata Block */
+        .author-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .author-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-name {
+            color: #0c2312;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .read-time {
+            color: #718096;
+            font-size: 0.85rem;
+            margin-top: 2px;
+        }
+
+        /* Slider Navigation Dots Controls */
+        .slider-navigation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-top: 24px;
+            margin-bottom: 40px;
+        }
+
+        .navigation-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #cbd5e0;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .navigation-dot:hover {
+            background-color: #a0aec0;
+        }
+
+        .navigation-dot.active {
+            background-color: #0c2312;
+            transform: scale(1.2);
+        }
+
+        /* Trending Modular Component Layout */
+        .trending-section {
+            display: flex;
+            gap: 80px;
+            margin: 0 0 90px 0;
+            text-align: left;
+        }
+
+        .trending-info {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .trending-info h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            color: #0c2312;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .trending-info p {
+            color: #718096;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            max-width: 320px;
+        }
+
+        .trending-link {
+            color: #0c2312;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+
+        .trending-link:hover {
+            color: #64b46c;
+        }
+
+        .trending-list {
+            flex: 2;
+            min-width: 350px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .trending-item {
+            display: flex;
+            gap: 30px;
+            padding: 24px 0;
+            border-top: 1px solid #edf2f7;
+            align-items: flex-start;
+        }
+
+        .trending-item:last-child {
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .trending-num {
+            color: #e2e8f0;
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1;
+            min-width: 60px;
+        }
+
+        .trending-title {
+            color: #0c2312;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 6px;
+            line-height: 1.4;
+            transition: color 0.2s ease;
+        }
+
+        .trending-title:hover {
+            color: #64b46c;
+        }
+
+        .trending-meta {
+            color: #718096;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Premium Silver Fieldset Layout Grid */
+        .fieldset-section {
+            margin: 40px 0 60px 0;
+        }
+
+        .custom-fieldset {
+            border: 1px solid #cbd5e0;
+            padding: 50px 35px;
+            border-radius: 20px;
+            background-color: #fafbf4;
+        }
+
+        .custom-legend {
+            font-family: 'Playfair Display', Georgia, serif;
+            color: #0c2312;
+            font-weight: 600;
+            padding: 0 25px;
+            font-size: 1.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: left;
+        }
+
+        .card-item {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.01);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.04);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-body {
+            padding: 24px;
+        }
+
+        .card-date {
+            color: #718096;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .card-body h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            color: #0c2312;
+            font-size: 1.35rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .card-body p {
+            color: #4a5568;
+            font-size: 0.92rem;
+            line-height: 1.55;
+        }
+
+        .card-footer {
+            padding: 0 24px 24px 24px;
+        }
+
+        .card-link {
+            color: #0c2312;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.88rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s ease;
+        }
+
+        .card-item:hover .card-link {
+            color: #64b46c;
+        }
+
+        /* Micro Footer Frame */
+        .site-footer {
+            background-color: #061309;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 50px 20px;
+            text-align: center;
+            font-size: 0.88rem;
+        }
+
+        /* Mobile Responsive Query Parameters */
+        @media (max-width: 900px) {
+            .articles-stack {
+                width: 100%;
+                flex-direction: column;
+            }
+            .main-article {
+                width: 100%;
+            }
+            .main-article.image-left, .main-article.image-right {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .article-img-wrapper {
+                min-width: 100%;
+            }
+            .article-img {
+                height: 280px;
+            }
+            .slider-navigation {
+                display: none; 
+            }
+            .trending-section {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero-banner">
+        <span class="hero-accent">Our Insights</span>
+        <h1>Articles</h1>
+        <h2 class="hero-subtitle">
+            In-depth analysis, expert advice, and experimental research from the area's largest landscape team.
+        </h2>
+    </header>
+
+    <main class="main-container">
+        
+        <div class="articles-slider-container">
+            <div class="articles-stack" id="sliderTrack">
+                
+                <article class="main-article image-left">
+                    <div class="article-img-wrapper">
+                        <img src="01.jpeg" alt="Rich healthy agriculture soil matrix" class="article-img">
+                        <span class="badge">Featured</span>
+                    </div>
+                    <div class="article-content">
+                        <a href="https://www.nature.com/articles/ncomms10434" target="_blank" class="article-link-wrapper">
+                            <span class="article-date">OCT 24, 2026</span>
+                            <h3>The Science of Soil Conditioning</h3>
+                        </a>
+                        <p>
+                            Maximizing plant vitality starts beneath the surface. Discover how introducing tailored bio-matter to rebalance nutrient distribution vectors is not only reducing maintenance cycles but significantly improving root oxygenation and efficiency.
+                        </p>
+                        <a href="https://www.nature.com/articles/ncomms10434" target="_blank" class="slider-read-more">
+                            Read More &rarr;
+                        </a>
+                        <div class="author-wrapper">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" alt="Editorial Team" class="author-avatar">
+                            <div>
+                                <div class="author-name">Editorial Team</div>
+                                <div class="read-time">5 min read</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="main-article image-right">
+                    <div class="article-img-wrapper">
+                        <img src="02.jpeg" alt="Lush native botany and local ecology" class="article-img">
+                        <span class="badge">Research</span>
+                    </div>
+                    <div class="article-content">
+                        <a href="https://soa.utexas.edu/sites/default/files/documents/belaire-et-al.-2023.pdf" target="_blank" class="article-link-wrapper">
+                            <span class="article-date">OCT 18, 2026</span>
+                            <h3>Integrating Local Ecology for Native Planting</h3>
+                        </a>
+                        <p>
+                            Utilizing native plant species significantly minimizes irrigation dependency and dynamic chemical treatments. Building localized ecosystems creates natural pest resistance, enhances regional biodiversity, and builds resilience.
+                        </p>
+                        <a href="https://soa.utexas.edu/sites/default/files/documents/belaire-et-al.-2023.pdf" target="_blank" class="slider-read-more">
+                            Read More &rarr;
+                        </a>
+                        <div class="author-wrapper">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" alt="Architecture Dept" class="author-avatar">
+                            <div>
+                                <div class="author-name">Architecture Dept</div>
+                                <div class="read-time">6 min read</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+
+        <div class="slider-navigation">
+            <button class="navigation-dot active" onclick="manualSlideChange(0)" aria-label="Go to slide 1"></button>
+            <button class="navigation-dot" onclick="manualSlideChange(1)" aria-label="Go to slide 2"></button>
+        </div>
+
+        <hr class="divider-line">
+
+        <section class="trending-section">
+            <div class="trending-info">
+                <h2>Trending Now</h2>
+                <p>Discover the most read articles from our experts this month.</p>
+                <a href="https://www.landscapearchitecturemagazine.org/" target="_blank" class="trending-link">View all trending &rarr;</a>
+            </div>
+
+            <div class="trending-list">
+                <div class="trending-item">
+                    <div class="trending-num">01</div>
+                    <div>
+                        <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9224521/" target="_blank" class="trending-title">The Psychological Impact of Office Greenery</a>
+                        <span class="trending-meta">Oct 15, 2026 &bull; 4 min read</span>
+                    </div>
+                </div>
+
+                <div class="trending-item">
+                    <div class="trending-num">02</div>
+                    <div>
+                        <a href="https://www.epa.gov/soakuptherain/soak-rain-permeable-pavement" target="_blank" class="trending-title">Understanding Permeable Hardscapes</a>
+                        <span class="trending-meta">Oct 10, 2026 &bull; 6 min read</span>
+                    </div>
+                </div>
+
+                <div class="trending-item">
+                    <div class="trending-num">03</div>
+                    <div>
+                        <a href="https://www.rhs.org.uk/plants/for-places/drought-resistant" target="_blank" class="trending-title">Top 5 Drought-Resistant Shrubs for 2027</a>
+                        <span class="trending-meta">Oct 05, 2026 &bull; 3 min read</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="fieldset-section">
+            <fieldset class="custom-fieldset">
+                <legend class="custom-legend">Latest Articles</legend>
+                
+                <div class="cards-grid">
+                    
+                    <div class="card-item">
+                        <div>
+                            <img src="03.jpeg" alt="Sustainable Hardscaping" class="card-img">
+                            <div class="card-body">
+                                <span class="card-date">Oct 18, 2026</span>
+                                <h4>Maximizing ROI with Sustainable Hardscaping</h4>
+                                <p>Hardscaping isn't just about paths. Strategic stone placement can reduce cooling costs and manage heavy water distributions.</p>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://www.landscapeperformance.org/" target="_blank" class="card-link">Read Article &rarr;</a>
+                        </div>
+                    </div>
+
+                    <div class="card-item">
+                        <div>
+                            <img src="04.jpeg" alt="Soil Science" class="card-img">
+                            <div class="card-body">
+                                <span class="card-date">Oct 12, 2026</span>
+                                <h4>The Science of Soil Conditioning</h4>
+                                <p>Why pre-treating your soil matrix is the most important step before any structural commercial planting or dynamic botanical layouts.</p>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://www.nature.com/articles/ncomms10434" target="_blank" class="card-link">Read Article &rarr;</a>
+                        </div>
+                    </div>
+
+                    <div class="card-item">
+                        <div>
+                            <img src="05.jpeg" alt="Native Flora" class="card-img">
+                            <div class="card-body">
+                                <span class="card-date">Sep 28, 2026</span>
+                                <h4>Navigating Local Ecology for Native Planting</h4>
+                                <p>A comprehensive architectural guide to selecting regional indigenous flora that practically maintains itself across diverse seasons.</p>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://soa.utexas.edu/sites/default/files/documents/belaire-et-al.-2023.pdf" target="_blank" class="card-link">Read Article &rarr;</a>
+                        </div>
+                    </div>
+
+                </div>
+            </fieldset>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 VBR Inspired Landscapes. All Rights Reserved</p>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 2;
+        let autoPlayTimer = setInterval(nextSlide, 10000); 
+
+        function updateSliderPosition(slideIndex) {
+            const track = document.getElementById('sliderTrack');
+            const dots = document.querySelectorAll('.navigation-dot');
+            
+            track.style.transform = `translateX(-${slideIndex * 50}%)`;
+            
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[slideIndex].classList.add('active');
+            currentSlide = slideIndex;
+        }
+
+        function nextSlide() {
+            let targetSlide = (currentSlide + 1) % totalSlides;
+            updateSliderPosition(targetSlide);
+        }
+
+        function manualSlideChange(slideIndex) {
+            clearInterval(autoPlayTimer);
+            updateSliderPosition(slideIndex);
+            autoPlayTimer = setInterval(nextSlide, 10000); 
+        }
+    </script>
+</body>
+</html>
