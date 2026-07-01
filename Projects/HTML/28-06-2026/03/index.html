@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALO Luxury Estates | Dubai Portfolios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --obsidian: #090f0d;
+            --investment-blue: #1e56a0;
+            --platinum-surface: #fafafa;
+            --slate-border: #e9ecef;
+            --text-main: #1a2220;
+            --text-muted: #5a6562;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, sans-serif;
+            --radius-premium: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--platinum-surface);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .premium-navigation-bar {
+            background-color: #ffffff;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid var(--slate-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-content {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            font-family: var(--font-serif);
+            color: var(--obsidian);
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        .navbar-brand span {
+            color: var(--investment-blue);
+        }
+
+        .workspace-wrapper {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 40px 20px 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .content-primary-stream {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .asset-title-block {
+            margin-bottom: 30px;
+            width: 100%;
+        }
+
+        .asset-title-block h1 {
+            font-family: var(--font-serif);
+            font-size: 2.8rem;
+            color: var(--obsidian);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .asset-location-tag {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .dashboard-panel {
+            background-color: #ffffff;
+            border: 1px solid var(--slate-border);
+            padding: 40px;
+            border-radius: var(--radius-premium);
+            margin-bottom: 25px;
+            width: 100%;
+        }
+
+        .metrics-summary-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+
+        .metric-tile-box {
+            background-color: #ffffff;
+            border: 1px solid var(--slate-border);
+            padding: 25px;
+            border-radius: var(--radius-premium);
+            text-align: center;
+        }
+
+        .metric-tile-box span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .metric-tile-box h4, .metric-tile-box h5 {
+            font-size: 1.3rem;
+            color: var(--obsidian);
+            font-weight: 700;
+        }
+
+        .primary-showcase-container {
+            width: 100%;
+            height: 450px;
+            border-radius: var(--radius-premium);
+            overflow: hidden;
+            margin-bottom: 30px;
+            border: 1px solid var(--slate-border);
+        }
+
+        .primary-showcase-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .editorial-heading {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: var(--obsidian);
+            margin-bottom: 20px;
+            font-weight: 700;
+            border-bottom: 1px solid var(--slate-border);
+            padding-bottom: 10px;
+        }
+
+        .section-subheading-luxury {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            color: var(--investment-blue);
+            margin: 25px 0 15px 0;
+            font-weight: 600;
+        }
+
+        .sub-units-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .unit-row-item {
+            background-color: #ffffff;
+            border: 1px solid var(--slate-border);
+            padding: 20px 25px;
+            border-radius: var(--radius-premium);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .unit-meta-title h5 {
+            font-size: 1.1rem;
+            color: var(--obsidian);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .unit-meta-title p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .unit-price-tag {
+            font-weight: 700;
+            color: var(--investment-blue);
+            font-size: 1.2rem;
+        }
+
+        .standalone-map-container {
+            width: 100%;
+            height: 350px;
+            border-radius: var(--radius-premium);
+            overflow: hidden;
+            border: 1px solid var(--slate-border);
+        }
+
+        .standalone-map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .table-panel-holder {
+            width: 100%;
+            overflow-x: auto;
+            border: 1px solid var(--slate-border);
+            border-radius: var(--radius-premium);
+            background-color: #ffffff;
+        }
+
+        .mayors-data-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            text-align: left;
+        }
+
+        .mayors-data-table th, .mayors-data-table td {
+            padding: 18px 24px;
+            white-space: nowrap; /* Prevents text overflow, maintaining alignment and symmetry */
+        }
+
+        .mayors-data-table th {
+            background-color: #fafbfc;
+            color: var(--obsidian);
+            font-size: 0.85rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--slate-border);
+        }
+
+        .mayors-data-table td {
+            border-bottom: 1px solid var(--slate-border);
+            font-size: 1rem;
+        }
+
+        .luxury-fieldset-card {
+            border: 1px solid var(--slate-border);
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: var(--radius-premium);
+            width: 100%;
+        }
+
+        .luxury-legend-badge {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--investment-blue);
+            background-color: #ffffff;
+            border: 1px solid var(--slate-border);
+            padding: 6px 20px;
+            border-radius: 50px;
+            margin-left: 20px;
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+        }
+        
+        .form-group-full {
+            grid-column: span 2;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid var(--slate-border);
+            border-radius: 8px;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            background-color: var(--platinum-surface);
+        }
+
+        textarea.form-control {
+            height: 120px;
+            resize: none;
+        }
+
+        .form-submit-btn {
+            grid-column: span 2;
+            background-color: var(--obsidian);
+            color: #ffffff;
+            border: none;
+            padding: 16px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        ul.bullet-list-luxury, ol.ordered-list-luxury {
+            padding-left: 25px;
+            margin: 15px 0;
+        }
+
+        ul.bullet-list-luxury li, ol.ordered-list-luxury li {
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+
+        hr.section-edge-line {
+            border: 0;
+            height: 1px;
+            background-color: var(--slate-border);
+            margin: 35px 0;
+            width: 100%;
+        }
+
+        .site-corporate-footer {
+            background-color: #ffffff;
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid var(--slate-border);
+            width: 100%;
+            margin-top: 60px;
+        }
+
+        .site-corporate-footer p {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .footer-disclaimer {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        @media (max-width: 768px) {
+            .metrics-summary-row, .contact-form {
+                grid-template-columns: 1fr;
+            }
+            .form-group-full {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="premium-navigation-bar">
+        <div class="navbar-content">
+            <a href="#" class="navbar-brand">VALO<span>.</span></a>
+        </div>
+    </nav>
+
+    <main class="workspace-wrapper">
+        <div class="content-primary-stream">
+            
+            <div class="asset-title-block">
+                <h1>Lateral One Capital</h1>
+                <div class="asset-location-tag">
+                    Downtown Dubai, UAE
+                </div>
+            </div>
+
+            <div class="metrics-summary-row">
+                <div class="metric-tile-box">
+                    <span>Handover Date</span>
+                    <h4>Q4 2026</h4>
+                </div>
+                <div class="metric-tile-box">
+                    <span>Down Payment</span>
+                    <h4>20% Secure Allocation</h4>
+                </div>
+                <div class="metric-tile-box">
+                    <span>Tax Protocols</span>
+                    <h5>0% Sovereign Rate</h5>
+                </div>
+            </div>
+
+            <div class="primary-showcase-container">
+                <img src="01.jpeg" alt="Dubai Real Estate">
+            </div>
+
+            <section class="dashboard-panel">
+                <h2 class="editorial-heading">Investment Macro Strategy</h2>
+                <p>Lateral One is positioned within Dubai's technological and corporate corridors.<br>The framework is engineered to preserve asset liquidity and maximize investment returns.</p>
+                
+                <h3 class="section-subheading-luxury">Core Advantages</h3>
+                <ul class="bullet-list-luxury">
+                    <li><strong>Capital Preservation:</strong> Tax exemption safeguards wealth profiles over long asset cycles.</li>
+                    <li><strong>Currency Pegging:</strong> Inflation protection via standard currency peg linked to the US Dollar ($).</li>
+                </ul>
+
+                <h3 class="section-subheading-luxury">Investor Timeline Steps</h3>
+                <ol class="ordered-list-luxury">
+                    <li>Expression of Interest Submission</li>
+                    <li>Unit Selection and Registration Protocols</li>
+                    <li>Escrow Account Activation</li>
+                </ol>
+            </section>
+
+            <hr class="section-edge-line">
+
+            <section class="dashboard-panel">
+                <h2 class="editorial-heading">Zoning Map Layout</h2>
+                <div class="standalone-map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57763.58721200163!2d55.23945904948753!3d25.195689035118742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f131!3m3!1m2!1s0x3e5f43348a685711%3A0x3f3640b395cf98b1!2sDowntown%20Dubai%20-%20Dubai!5e0!3m2!1sen!2sae!4v1710000000000!5m2!1sen!2sae" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </section>
+
+            <hr class="section-edge-line">
+
+            <section class="dashboard-panel">
+                <h2 class="editorial-heading">Available Real Estate Units</h2>
+                <div class="sub-units-stack">
+                    <div class="unit-row-item">
+                        <div class="unit-meta-title">
+                            <h5>Premium Studio Suite</h5>
+                            <p>1 Bed / 39 SQM / Skyline View</p>
+                        </div>
+                        <div class="unit-price-tag">From AED 650,000</div>
+                    </div>
+
+                    <div class="unit-row-item">
+                        <div class="unit-meta-title">
+                            <h5>Executive Bedroom Suite</h5>
+                            <p>1 Bed & Salon / 71 SQM / Waterfront Balcony Corridor</p>
+                        </div>
+                        <div class="unit-price-tag">From AED 950,000</div>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="section-edge-line">
+
+            <section class="dashboard-panel">
+                <h2 class="editorial-heading">Fiscal Yield Projections</h2>
+                <div class="table-panel-holder">
+                    <table class="mayors-data-table">
+                        <thead>
+                            <tr>
+                                <th>Asset Tier</th>
+                                <th>Zoning Corridor</th>
+                                <th>Minimum Entry</th>
+                                <th>Projected Net ROI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>The Horizon Elite</strong></td>
+                                <td>Financial Grid</td>
+                                <td>$450,000 USD</td>
+                                <td><strong>7.8% Net</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Marina Vista</strong></td>
+                                <td>Waterfront Gate</td>
+                                <td>$520,000 USD</td>
+                                <td><strong>8.2% Net</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <hr class="section-edge-line">
+
+            <section style="width: 100%;">
+                <fieldset class="luxury-fieldset-card">
+                    <legend class="luxury-legend-badge">Contact Us</legend>
+                    <form class="contact-form" action="#" method="POST">
+                        <div>
+                            <input type="text" class="form-control" placeholder="Full Name" required>
+                        </div>
+                        <div>
+                            <input type="email" class="form-control" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group-full">
+                            <input type="tel" class="form-control" placeholder="Phone Number">
+                        </div>
+                        <div class="form-group-full">
+                            <textarea class="form-control" placeholder="Investment Preferences or Specific Comments" required></textarea>
+                        </div>
+                        <button type="submit" class="form-submit-btn">Submit Request</button>
+                    </form>
+                </fieldset>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="site-corporate-footer">
+        <p>© 2026 VALO Group. All Rights Reserved.</p>
+        <h6 class="footer-disclaimer">Regulatory Disclaimer: Investment involves structural risk. Past metrics are not completely indicative of future execution yields.</h6>
+    </footer>
+
+</body>
+</html>
